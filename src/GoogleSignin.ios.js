@@ -9,47 +9,6 @@ import {
 
 const { RNGoogleSignin } = NativeModules;
 
-const RNGoogleSigninButton = requireNativeComponent('RNGoogleSigninButton', null);
-
-class GoogleSigninButton extends Component {
-  static propTypes = {
-    ...View.propTypes,
-    size: PropTypes.number,
-    color: PropTypes.number
-  };
-
-  componentDidMount() {
-    this._clickListener = NativeAppEventEmitter.addListener('RNGoogleSignInWillDispatch', () => {
-      GoogleSigninSingleton.signinIsInProcess = true;
-      this.props.onPress && this.props.onPress();
-    });
-  }
-
-  componentWillUnmount() {
-    this._clickListener && this._clickListener.remove();
-  }
-
-  render() {
-    const { style, ...props } = this.props;
-
-    return (
-      <RNGoogleSigninButton style={[{ backgroundColor: 'rgba(0,0,0,0)' }, style]} {...props} />
-    );
-  }
-}
-
-GoogleSigninButton.Size = {
-  Icon: RNGoogleSignin.BUTTON_SIZE_ICON,
-  Standard: RNGoogleSignin.BUTTON_SIZE_STANDARD,
-  Wide: RNGoogleSignin.BUTTON_SIZE_WIDE
-};
-
-GoogleSigninButton.Color = {
-  Auto: RNGoogleSignin.BUTTON_COLOR_AUTO,
-  Light: RNGoogleSignin.BUTTON_COLOR_LIGHT,
-  Dark: RNGoogleSignin.BUTTON_COLOR_DARK
-};
-
 class GoogleSignin {
 
   constructor() {
