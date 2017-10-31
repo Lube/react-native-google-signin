@@ -9,20 +9,6 @@ import {
 
 const { RNGoogleSignin } = NativeModules;
 
-const RNGoogleSigninButton = requireNativeComponent('RNGoogleSigninButton', null);
-
-GoogleSigninButton.Size = {
-  Icon: RNGoogleSignin.BUTTON_SIZE_ICON,
-  Standard: RNGoogleSignin.BUTTON_SIZE_STANDARD,
-  Wide: RNGoogleSignin.BUTTON_SIZE_WIDE
-};
-
-GoogleSigninButton.Color = {
-  Auto: RNGoogleSignin.BUTTON_COLOR_AUTO,
-  Light: RNGoogleSignin.BUTTON_COLOR_LIGHT,
-  Dark: RNGoogleSignin.BUTTON_COLOR_DARK
-};
-
 class GoogleSigninError extends Error {
   constructor(error, code) {
     super(error);
@@ -145,4 +131,4 @@ class GoogleSignin {
   }
 }
 
-module.exports = { GoogleSignin: new GoogleSignin(), GoogleSigninButton };
+module.exports = { GoogleSignin: new GoogleSignin() };
